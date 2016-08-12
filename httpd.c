@@ -58,7 +58,6 @@ int get_line(int sock, char buf[], int buflen)
 			{
 				buf[i++] = c;
 			}
-	printf("exe_cgi\n");
 		}
 		else
 		{
@@ -206,8 +205,8 @@ static void exe_cgi( int sock, const char *method, const char *path, const char 
 		close(cgi_input[0]);
 		close(cgi_output[1]);
 		
-		dup2(cgi_input[1], 1);
-		dup2(cgi_output[0], 0);
+	//	dup2(cgi_input[1], 1);
+	//	dup2(cgi_output[0], 0);
 
 		char c = '\0';
 		int  i =0;
@@ -217,6 +216,7 @@ static void exe_cgi( int sock, const char *method, const char *path, const char 
 			for(; i < content_length; ++i)  
 			{
 				recv(sock, &c, 1, 0);
+				printf("%c", c);
 				write(cgi_input[1], &c, 1);
 			}
 		}
@@ -224,7 +224,6 @@ static void exe_cgi( int sock, const char *method, const char *path, const char 
 		int ret = 0;
 		while( read(cgi_output[0], &c, 1) > 0)
 		{
-			printf("%c ", c);
 			send(sock, &c, 1, 0);
 		}
 
