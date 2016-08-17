@@ -347,13 +347,15 @@ static void* accept_request(void *arg)		//static
 		{}   //noting to do
 	}
 	
-
+	printf("!@!#%@^   %s   !@%@^%\n", buf);
 	if(cgi) // u+x file
 	{
+		printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!cgi\n");
 		exe_cgi(sock, method, path, query_string);  //cgi mode
 	}
 	else  //.jpg   .html ...
 	{
+		printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!www\n");
 		clear_header(sock);  //! important!
 		echo_www(sock, path, st.st_size);
 	}

@@ -13,5 +13,16 @@
 			<input type="submit" name="submit_dec" value="-">
 			<input type="submit" name="submit_mul" value="*">
 			<input type="submit" name="submit_div" value="/">
+		</form>
+		<form action="/mysql_connect/mysql_cgi" method="POST">
+			name: <input type="text" name="data_name"/> 
+			age: <input type="text" name="data_age"/> 
+			school: <input type="text" name="data_school"/> 
+			<input type="submit" name="insert" value="insert">
+			<input type="submit" name="select" value="select">
+			<input type="submit" name="update" value="update">
+			<input type="submit" name="delete" value="delete">
+		</form>
+
 	</body>
 </html>
